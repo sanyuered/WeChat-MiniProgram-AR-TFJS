@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "subpackages": [
+    {
+      "root": "package_face_detecting",
+      "pages": [
+        "pages/camera/camera",
+        "pages/photo/photo"
+      ]
+    },
+    {
+      "root": "package_face_recognition",
+      "pages": [
+        "pages/camera/camera",
+        "pages/photo/photo"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Miniprogram AR",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
