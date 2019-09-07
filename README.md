@@ -94,9 +94,9 @@ File: /utils/face-api.js
 ```
 ## Set your website url of models
 
-The project includes 3 models that need to be depolyed on a website. The parameter "modelUrl" is default to a website url that may be very slow for you.
+The project includes 3 models that need to be depolyed on a website. The parameter "modelUrl" is default to a website url that may be very slow for you. You can replace the default url with a web site url.
 
-Folder: /models
+Download models: https://github.com/sanyuered/sanyuered.github.io/tree/master/models
 
 ```javascript
     // your website url
