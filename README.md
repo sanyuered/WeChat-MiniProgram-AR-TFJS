@@ -107,7 +107,7 @@ Download models: https://github.com/sanyuered/sanyuered.github.io/tree/master/mo
 ```
 ## Known Issues
 
-When using face detecting with face landmarks, a memory leak will occur on Android Wechat. The Mini-program will slower and slower on a few minutes, but iOS Wechat has no the issue.
+When using face detecting with face landmarks, a memory leak will occur on Android Wechat. The Mini-program will be slower and slower on a few minutes, but iOS Wechat has no the issue.
 When using "Access a Camera" mode, the default value of parameter "isWithFaceLandmarks" is "false".
 
 
