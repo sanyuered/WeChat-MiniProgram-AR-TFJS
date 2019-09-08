@@ -94,7 +94,7 @@ File: /utils/face-api.js
 ```
 ## Set your website url of models
 
-The project includes 3 models that need to be depolyed on a website. The parameter "modelUrl" is default to a website url that may be very slow for you. You can replace the default url with a web site url.
+The project includes 3 models that are depolyed on a website. The default value of parameter "modelUrl" is a website url that may be very slow in your network. You can replace the default url with a web site url.
 
 Download models: https://github.com/sanyuered/sanyuered.github.io/tree/master/models
 
@@ -106,6 +106,6 @@ Download models: https://github.com/sanyuered/sanyuered.github.io/tree/master/mo
 ## Known Issues
 
 When using face detecting with face landmarks, a memory leak will occur on Android Wechat. The Mini-program will slower and slower on a few minutes, but iOS Wechat has no the issue.
-When using "Access a Camera" mode, the parameter "isWithFaceLandmarks" is default to false.
+When using "Access a Camera" mode, the default value of parameter "isWithFaceLandmarks" is "false".
 
 
