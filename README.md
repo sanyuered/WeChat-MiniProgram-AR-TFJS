@@ -69,7 +69,7 @@ The WeChat Mini-program plugin depends on "abab" and "fetch-wechat" npm packages
 
 step 1: npm install
 
-step 2: run "微信开发者工具--工具--构建npm", a miniprogram_npm folder will be updated.
+step 2: run "微信开发者工具--工具--构建npm", a folder "miniprogram_npm" will be updated.
 
 The project has included a folder "miniprogram_npm" precompiled.
 
