@@ -1,14 +1,12 @@
 <view class="page">
   <view>
-  <!--
     <camera 
       device-position="{{devicePosition}}" 
       flash="off" 
       binderror="error">
-     
-    </camera>-->
-     <canvas canvas-id="canvas1" class="canvas1">
+      <canvas canvas-id="canvas1" class="canvas1">
       </canvas>
+    </camera>
     <canvas canvas-id="hiddenCanvas" class="hiddenCanvas">
     </canvas>
   </view>
