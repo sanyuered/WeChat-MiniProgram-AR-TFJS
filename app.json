@@ -21,7 +21,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Miniprogram AR",
+    "navigationBarTitleText": "Miniprogram AI",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
