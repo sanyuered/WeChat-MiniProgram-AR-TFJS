@@ -2,16 +2,16 @@
     <view class="page__bd">
         <!-- Face Detecting -->
         <view class="weui-panel">
-            <view class="weui-panel__hd">Face Detecting</view>
+            <view class="weui-panel__hd">Face Detecting and 3D Mask</view>
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_text">
-                    <view class="weui-media-box__desc">This is a face detecting demo using face-api.js. Face-api.js is based on TensorflowJS.</view>
+                    <view class="weui-media-box__desc">This is a 3D mask demo using MediaPipe and TFJS.</view>
                     <view class="weui-media-box__info">
-                        <navigator url="/package_face_detecting/pages/camera/camera" class="marginTop10">
+                        <navigator url="/package_face_3d_mask/pages/camera/camera" class="marginTop10">
                             <button class="weui-btn" type="primary">Access a camera</button>
                         </navigator>
 
-                        <navigator url="/package_face_detecting/pages/photo/photo" class="marginTop10">
+                        <navigator url="/package_face_3d_mask/pages/photo/photo" class="marginTop10">
                             <button class="weui-btn">Take a photo</button>
                         </navigator>
                     </view>
@@ -21,16 +21,16 @@
 
         <!-- Face Recognition -->
         <view class="weui-panel">
-            <view class="weui-panel__hd">Face Recognition</view>
+            <view class="weui-panel__hd">Face Detecting and 2D Mask</view>
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_text">
-                    <view class="weui-media-box__desc">This is a face recognition demo using face-api.js.</view>
+                    <view class="weui-media-box__desc">This is a 2D mask demo using MediaPipe and TFJS.</view>
                     <view class="weui-media-box__info">
-                        <navigator url="/package_face_recognition/pages/camera/camera" class="marginTop10">
+                        <navigator url="/package_face_2d_mask/pages/camera/camera" class="marginTop10">
                             <button class="weui-btn" type="primary">Access a camera</button>
                         </navigator>
 
-                        <navigator url="/package_face_recognition/pages/photo/photo" class="marginTop10">
+                        <navigator url="/package_face_2d_mask/pages/photo/photo" class="marginTop10">
                             <button class="weui-btn">Take a photo</button>
                         </navigator>
                     </view>

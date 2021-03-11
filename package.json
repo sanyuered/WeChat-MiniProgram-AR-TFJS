@@ -10,7 +10,14 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "abab": "^2.0.0",
-    "fetch-wechat": "0.0.3"
+    "abab": "2.0.0",
+    "base64-js": "1.3.1",
+    "fetch-wechat": "0.0.3",
+    "text-encoder": "0.0.4",
+    "threejs-miniprogram": "0.0.2",
+    "@tensorflow-models/face-landmarks-detection": "0.0.3",
+    "@tensorflow/tfjs-backend-webgl": "2.1.0",
+    "@tensorflow/tfjs-converter": "2.1.0",
+    "@tensorflow/tfjs-core": "2.1.0"
   }
 }

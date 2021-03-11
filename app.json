@@ -4,14 +4,14 @@
   ],
   "subpackages": [
     {
-      "root": "package_face_detecting",
+      "root": "package_face_3d_mask",
       "pages": [
         "pages/camera/camera",
         "pages/photo/photo"
       ]
     },
     {
-      "root": "package_face_recognition",
+      "root": "package_face_2d_mask",
       "pages": [
         "pages/camera/camera",
         "pages/photo/photo"
