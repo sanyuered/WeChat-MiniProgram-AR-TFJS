@@ -220,6 +220,18 @@ function stopAnimate() {
     }
 }
 
+function dispose() {
+    camera = null;
+    scene = null;
+    renderer = null;
+    canvas = null;
+    THREE = null;
+    mainModel = null;
+    requestId = null;
+    canvasWidth = null;
+    canvasHeight = null;
+}
+
 module.exports = {
     initThree,
     stopAnimate,
@@ -227,4 +239,5 @@ module.exports = {
     setModel,
     setSceneBackground,
     clearSceneBackground,
+    dispose,
 }

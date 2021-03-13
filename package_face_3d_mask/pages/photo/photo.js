@@ -25,6 +25,9 @@ Page({
     model.initThree(canvasWebGLId, modelUrl);
 
   },
+  onUnload: function () {
+    model.dispose();
+  },
   processPhoto(photoPath, imageWidth, imageHeight) {
     var _that = this;
     const ctx = wx.createCanvasContext(canvasId);

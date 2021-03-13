@@ -58,7 +58,7 @@ function loadModel(modelUrl) {
     mainModel = sprite;
     scene.add(mainModel);
     wx.hideLoading();
-    console.log('loadModel', 'success');
+    console.log('loadSprite', 'success');
 }
 
 function updateModel(modelUrl) {
@@ -78,7 +78,7 @@ function updateModel(modelUrl) {
     // add new model
     scene.add(mainModel);
     wx.hideLoading();
-    console.log('updateModel', 'success');
+    console.log('updateSprite', 'success');
 }
 
 function setSize() {
@@ -119,7 +119,6 @@ function setModel(prediction,
     mainModel.position.copy(result.position);
     // scale
     mainModel.scale.setScalar(initScale * result.scale);
-
 }
 
 function getPosition(prediction, id) {
@@ -196,6 +195,18 @@ function stopAnimate() {
     }
 }
 
+function dispose() {
+    camera = null;
+    scene = null;
+    renderer = null;
+    canvas = null;
+    THREE = null;
+    mainModel = null;
+    requestId = null;
+    canvasWidth = null;
+    canvasHeight = null;
+}
+
 module.exports = {
     initThree,
     stopAnimate,
@@ -203,4 +214,5 @@ module.exports = {
     setModel,
     setSceneBackground,
     clearSceneBackground,
+    dispose,
 }

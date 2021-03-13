@@ -4,6 +4,7 @@
 
 | Date　　　| Update |
 | -- | -- |
+| 2021-03-13 | Bug Fixed: 1. The image of the face 2d mask does not displayed on android WeChat. 2. When enter the demo UI for the second time, the 3D model does not displayed.
 | 2021-03-11 | New: A Face AR using "face-landmarks-detection" and "TensorFlow.js". Update: Replace "face-api.js" with "face-landmarks-detection", the codes of "face-api.js" are removed. |
 | 2019-09-07 | New: A Face detecting and recognition with "face-api.js". |
 
