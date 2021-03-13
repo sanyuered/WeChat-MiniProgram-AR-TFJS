@@ -30,6 +30,8 @@ Page({
     onUnload: function () {
         this.stopTacking();
         console.log('onUnload', 'listener is stop');
+        
+        model.stopAnimate();
         model.dispose();
     },
     startTacking() {

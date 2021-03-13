@@ -26,6 +26,7 @@ Page({
 
   },
   onUnload: function () {
+    model.stopAnimate();
     model.dispose();
   },
   processPhoto(photoPath, imageWidth, imageHeight) {
