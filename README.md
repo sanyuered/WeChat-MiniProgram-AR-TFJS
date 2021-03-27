@@ -4,7 +4,7 @@
 
 | Date　　　| Update |
 | -- | -- |
-| 2021-03-13 | Bug Fixed: 1. The image of the face 2d mask does not displayed on android WeChat. 2. When enter the demo UI for the second time, the 3D model does not displayed.
+| 2021-03-13 | Bug Fixed: 1. The image of the face 2d mask is not displayed on android WeChat. 2. When enter the demo UI on the second time, the 3D model is not displayed.
 | 2021-03-11 | New: A Face AR using "face-landmarks-detection" and "TensorFlow.js". Update: Replace "face-api.js" with "face-landmarks-detection", the codes of "face-api.js" are removed. |
 | 2019-09-07 | New: A Face detecting and recognition with "face-api.js". |
 
@@ -22,7 +22,7 @@ The "face-landmarks-detection" library offers a face detection in the browser en
 
 Why choose "face-landmarks-detection"?
 
-Because I do not find a tiny model of TensorFlow.js for face detecting until I found the "face-landmarks-detection" library.
+Because I didn't find a tiny model of TensorFlow.js for face detecting until I found the "face-landmarks-detection" library.
 
 This demo demonstrates a face AR. 
 
