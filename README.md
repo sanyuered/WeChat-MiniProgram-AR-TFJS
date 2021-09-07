@@ -4,7 +4,7 @@
 
 | Date　　　| Update |
 | -- | -- |
-| 2021-09-8 | New: Added a hand pose demo using tfjs, but it is slowly.|
+| 2021-09-08 | New: Added a hand pose demo using tfjs. It is slow and about 500 ms per detection.|
 | 2021-03-13 | Bug Fixed: 1. The image of the face 2d mask is not displayed on android WeChat. 2. When enter the demo UI on the second time, the 3D model is not displayed.|
 | 2021-03-11 | New: A Face AR using "face-landmarks-detection" and "TensorFlow.js". Update: Replace "face-api.js" with "face-landmarks-detection", the codes of "face-api.js" are removed. |
 | 2019-09-07 | New: A Face detecting and recognition with "face-api.js". |
