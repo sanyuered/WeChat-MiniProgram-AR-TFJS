@@ -1,30 +1,31 @@
-const face = require('../../utils/faceBusiness.js');
+const hand = require('../../utils/handBusiness.js');
 const model = require('../../utils/modelBusiness.js');
-const canvasId = 'canvas2d';
+const canvasId = 'canvas2d'
 const canvasWebGLId = 'canvasWebGL';
 const maxCanvasWidth = 375;
-// a url of sprite image
+// a url of gltf model 
 const modelUrl = '../../utils/cat_beard.png';
 
 Page({
   data: {
     btnText: 'Take a photo',
-    devicePosition: 'front',
+    devicePosition: 'back',
     // if it is taking photo
     isRunning: true,
   },
   async onLoad() {
+    // var _that = this;
     // load tfjs model
     wx.showLoading({
       title: 'Loading TFJS...',
     });
-    await face.loadModel();
+    await hand.loadModel();
     wx.hideLoading();
 
     setTimeout(function () {
       // load 3d model
       model.initThree(canvasWebGLId, modelUrl);
-    }, 150)
+  }, 150)
 
   },
   onUnload: function () {
@@ -60,24 +61,23 @@ Page({
             height: res.height,
           };
           // process
-          var result = await face.detect(frame);
+          var result = await hand.detect(frame);
 
-          if (result && result.prediction) {
+          if (result && result.prediction.length > 0) {
             // set the rotation and position of the 3d model.    
-            model.setModel(result.prediction,
+            model.setModel(result.prediction[0],
               canvasWidth,
               canvasHeight);
             // put the 3d model on the image
             model.setSceneBackground(frame);
           } else {
             var message = 'No results.';
+            console.log('processPhoto', message)
             wx.showToast({
               title: message,
               icon: 'none'
             });
           }
-
-
         }
       });
     });

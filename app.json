@@ -16,6 +16,13 @@
         "pages/camera/camera",
         "pages/photo/photo"
       ]
+    },
+    {
+      "root": "package_handpose_mask",
+      "pages": [
+        "pages/camera/camera",
+        "pages/photo/photo"
+      ]
     }
   ],
   "window": {

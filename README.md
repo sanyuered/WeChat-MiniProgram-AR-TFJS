@@ -4,13 +4,15 @@
 
 | Date　　　| Update |
 | -- | -- |
-| 2021-03-13 | Bug Fixed: 1. The image of the face 2d mask is not displayed on android WeChat. 2. When enter the demo UI on the second time, the 3D model is not displayed.
+| 2021-09-8 | New: Added a hand pose demo using tfjs, but it is slowly.|
+| 2021-03-13 | Bug Fixed: 1. The image of the face 2d mask is not displayed on android WeChat. 2. When enter the demo UI on the second time, the 3D model is not displayed.|
 | 2021-03-11 | New: A Face AR using "face-landmarks-detection" and "TensorFlow.js". Update: Replace "face-api.js" with "face-landmarks-detection", the codes of "face-api.js" are removed. |
 | 2019-09-07 | New: A Face detecting and recognition with "face-api.js". |
 
-## Introduction of WeChat Mini-program AR with TFJS
+## Introduction on WeChat Mini-program AR
 
-TensorFlow.js is a library for machine learning in JavaScript. There is a WeChat Mini-program plugin for TensorFlow.js.
+TensorFlow.js is a JavaScript library for machine learning. 
+There is a WeChat Mini-program plugin for TensorFlow.js.
 
 [tfjs-wechat](https://github.com/tensorflow/tfjs-wechat)
 
@@ -58,6 +60,11 @@ A effect of rotating.
 
 ![avatar](screenshot/4-3.jpg)
 
+## Hand Pose and 2D Mask
+
+Use the demo to scan a hand. Expect a effect below.
+
+![avatar](screenshot/5.jpg)
 
 ## How to build
 
@@ -73,15 +80,16 @@ File: /package.json
 
 ```javascript
   "dependencies": {
+    "@tensorflow-models/face-landmarks-detection": "0.0.3",
+    "@tensorflow-models/handpose": "0.0.6",
+    "@tensorflow/tfjs-backend-webgl": "2.1.0",
+    "@tensorflow/tfjs-converter": "2.1.0",
+    "@tensorflow/tfjs-core": "2.1.0",
     "abab": "2.0.0",
     "base64-js": "1.3.1",
     "fetch-wechat": "0.0.3",
     "text-encoder": "0.0.4",
-    "threejs-miniprogram": "0.0.2",
-    "@tensorflow-models/face-landmarks-detection": "0.0.3",
-    "@tensorflow/tfjs-backend-webgl": "2.1.0",
-    "@tensorflow/tfjs-converter": "2.1.0",
-    "@tensorflow/tfjs-core": "2.1.0"
+    "threejs-miniprogram": "0.0.2"
   }
 ```
 
@@ -105,11 +113,23 @@ File: /miniprogram_npm/@tensorflow-models/face-landmarks-detection
 var FACEMESH_GRAPHMODEL_PATH = 'https://m.sanyue.red/demo/tfjs/facemesh_v1';
 ```
 
+You can search keywords that are "HANDDETECT_MODEL_PATH" and "HANDPOSE_MODEL_PATH" in the "handpose" folder. 
+
+File: /miniprogram_npm/@tensorflow-models/handpose
+
+```javascript
+// modified
+HANDDETECT_MODEL_PATH = 'https://m.sanyue.red/demo/tfjs/handdetector_v1';
+
+// modified
+HANDPOSE_MODEL_PATH = 'https://m.sanyue.red/demo/tfjs/handskeleton_v1';
+```
+
 ## Set the url of the 3D model
 
 You may replace the default url of a gltf model for 3D mask.
 
-File: /package_face_3d_mask/pages/photo/photo.js and camera/camera.js
+File: /package_face_3d_mask/pages/photo/photo.js and /package_face_3d_mask/pagescamera/camera.js
 
 ```javascript
 // a url of gltf model
@@ -120,14 +140,14 @@ const modelUrl = 'https://m.sanyue.red/demo/gltf/sunglass.glb';;
 
 You may replace the default url of a image for 2D mask.
 
-File: /package_face_2d_mask/pages/photo/photo.js and camera/camera.js
+File: /package_face_2d_mask/pages/photo/photo.js and /package_face_2d_mask/pages/camera/camera.js
 
 ```javascript
 // a url of sprite image
 const modelUrl = '../../utils/cat_beard.png';
 ```
 
-## How to put a 3D model or a image on other positions of a face
+## How to put a 3D model or a image on an other position
 
 This is a map of the 486 keypoints of a face.
 
@@ -152,4 +172,36 @@ File: /package_face_2d_mask/utils/modelBusiness.js
 const trackPointA = 0;
 const trackPointB = 61;
 const trackPointC = 291;
+```
+
+## Hand Pose Map
+
+The landmarks of the hand pose.
+
+![avatar](screenshot/6.jpg)
+
+```javascript
+    // the "predictions" is an array of objects describing each detected hand.
+    [
+      {
+        handInViewConfidence: 1,
+        boundingBox: {
+          topLeft: [162.91, -17.42],
+          bottomRight: [548.56, 368.23],
+        },
+        landmarks: [
+          [472.52, 298.59, 0.00],
+          [412.80, 315.64, -6.18],
+          // etc.
+        ],
+        annotations: {
+          thumb: [
+            [412.80, 315.64, -6.18]
+            [350.02, 298.38, -7.14],
+            // etc.
+          ],
+          // etc.
+        }
+      }
+    ]
 ```

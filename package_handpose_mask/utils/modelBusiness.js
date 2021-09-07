@@ -2,9 +2,7 @@ const { createScopedThreejs } = require('threejs-miniprogram');
 // the scale of the image
 const initScale = 240;
 // index of the track points of the face
-const trackPointA = 0;
-const trackPointB = 61;
-const trackPointC = 291;
+const trackPointA = 8;
 var camera, scene, renderer;
 var canvas;
 var THREE;
@@ -96,6 +94,14 @@ function setSize() {
     camera.updateProjectionMatrix();
 }
 
+function getPosition(prediction, id) {
+    var p = prediction.landmarks[id];
+    var x = p[0] - 0.5 * canvasWidth;
+    var y = 0.5 * canvasHeight - p[1];
+    var z = p[2];
+    return new THREE.Vector3(x, y, z);
+}
+
 function setModel(prediction,
     _canvasWidth,
     _canvasHeight) {
@@ -111,69 +117,12 @@ function setModel(prediction,
         setSize();
     }
 
-    const result = calcTriangle(prediction,
-        trackPointA,
-        trackPointB,
-        trackPointC);
-    console.log('calcTriangle', result);
-
-    // rotation
-    var rotation = new THREE.Euler();
-    rotation.setFromRotationMatrix(result.rotation);
-    mainModel.material.rotation = rotation.y;
-    // position
-    mainModel.position.copy(result.position);
-    // scale
-    mainModel.scale.setScalar(initScale * result.scale);
-}
-
-function getPosition(prediction, id) {
-    var p = prediction.scaledMesh[id];
-    var x = p[0] - 0.5 * canvasWidth;
-    var y = 0.5 * canvasHeight - p[1];
-    var z = p[2];
-    return new THREE.Vector3(x, y, z);
-}
-
-function getScale(prediction, id1, id2) {
-    var p1 = prediction.mesh[id1];
-    var p1_scaled = prediction.scaledMesh[id1];
-    var p2 = prediction.mesh[id2];
-    var p2_scaled = prediction.scaledMesh[id2];
-
-    var a = p2[0] - p1[0];
-    var b = p2_scaled[0] - p1_scaled[0];
-    return b / a;
-}
-
-function calcTriangle(prediction, id0, id1, id2) {
-    var p0 = getPosition(prediction, id0);
-    var p1 = getPosition(prediction, id1);
-    var p2 = getPosition(prediction, id2);
+    var position = getPosition(prediction, trackPointA);
+    console.log('setModel', position);
 
     // position
-    var triangle = new THREE.Triangle();
-    triangle.set(p0, p1, p2);
-    const center = new THREE.Vector3();
-    triangle.getMidpoint(center);
+    mainModel.position.copy(position);
 
-    // rotation
-    const rotation = new THREE.Matrix4();
-    const x = p1.clone().sub(p2).normalize();
-    const y = p1.clone().sub(p0).normalize();
-    const z = new THREE.Vector3().crossVectors(x, y);
-    const y2 = new THREE.Vector3().crossVectors(x, z).normalize();
-    const z2 = new THREE.Vector3().crossVectors(x, y2).normalize();
-    rotation.makeBasis(x, y2, z2);
-
-    // scale
-    var scale = getScale(prediction, id1, id2);
-
-    return {
-        position: center,
-        rotation: rotation,
-        scale: scale,
-    };
 }
 
 function setSceneBackground(frame) {

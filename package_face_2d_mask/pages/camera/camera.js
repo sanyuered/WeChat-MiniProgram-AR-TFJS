@@ -22,9 +22,11 @@ Page({
         await face.loadModel();
         wx.hideLoading();
 
-        // load 3d model
-        model.initThree(canvasWebGLId, modelUrl);
-
+        setTimeout(function () {
+            // load 3d model
+            model.initThree(canvasWebGLId, modelUrl);
+        }, 150)
+        
         _that.startTacking();
     },
     onUnload: function () {
@@ -56,7 +58,7 @@ Page({
 
             // process
             var result = await face.detect(frame);
-            
+
             if (result && result.prediction) {
                 var canvasWidth = frame.width;
                 var canvasHeight = frame.height;

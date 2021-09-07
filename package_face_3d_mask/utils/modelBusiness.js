@@ -27,6 +27,8 @@ function initThree(canvasId, modelUrl) {
 
 function initScene() {
     camera = new THREE.OrthographicCamera(1, 1, 1, 1, -1000, 1000);
+    // set the camera
+    setSize();
     scene = new THREE.Scene();
     // ambient light
     scene.add(new THREE.AmbientLight(0xffffff));
@@ -52,7 +54,7 @@ function loadModel(modelUrl) {
     registerGLTFLoader(THREE);
     var loader = new THREE.GLTFLoader();
     wx.showLoading({
-        title: 'Loading Model...',
+        title: 'Loading 3D...',
     });
     loader.load(modelUrl,
         function (gltf) {
@@ -80,7 +82,7 @@ function updateModel(modelUrl) {
     var loader = new THREE.GLTFLoader();
     // loading
     wx.showLoading({
-        title: 'Loading Model...',
+        title: 'Loading 3D...',
     });
     loader.load(modelUrl,
         function (gltf) {
@@ -110,6 +112,9 @@ function updateModel(modelUrl) {
 }
 
 function setSize() {
+    if (!camera) {
+        return;
+    }
     const w = canvasWidth;
     const h = canvasHeight;
     camera.left = -0.5 * w;
@@ -123,6 +128,11 @@ function setModel(prediction,
     _canvasWidth,
     _canvasHeight) {
 
+    if (!mainModel) {
+        console.log('setModel', '3d model is not loaded.');
+        return;
+    }
+
     if (_canvasWidth !== canvasWidth) {
         canvasWidth = _canvasWidth;
         canvasHeight = _canvasHeight;
@@ -135,15 +145,14 @@ function setModel(prediction,
         trackPointC);
     console.log('calcTriangle', result);
 
-    if (!mainModel) {
-        console.log('setModel', '3d model is not loaded.');
-        return;
-    }
+
+    // rotation
     mainModel.rotation.setFromRotationMatrix(
         result.rotation);
+    // position
     mainModel.position.copy(result.position);
+    // scal
     mainModel.scale.setScalar(initScale * result.scale);
-
 }
 
 function getPosition(prediction, id) {

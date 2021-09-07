@@ -21,9 +21,10 @@ Page({
     await face.loadModel();
     wx.hideLoading();
 
-    // load 3d model
-    model.initThree(canvasWebGLId, modelUrl);
-
+    setTimeout(function () {
+      // load 3d model
+      model.initThree(canvasWebGLId, modelUrl);
+    }, 150)
   },
   onUnload: function () {
     model.stopAnimate();
