@@ -12,21 +12,15 @@ Page({
     data: {
         devicePosition: 'front',
     },
-    onReady() {
-    },
-    async onLoad() {
+    async onReady() {
         var _that = this;
         wx.showLoading({
             title: 'Loading TFJS...',
         });
         await face.loadModel();
         wx.hideLoading();
-
-        setTimeout(function () {
-            // load 3d model
-            model.initThree(canvasWebGLId, modelUrl);
-        }, 150)
-        
+        // load 3d model
+        model.initThree(canvasWebGLId, modelUrl);
         _that.startTacking();
     },
     onUnload: function () {

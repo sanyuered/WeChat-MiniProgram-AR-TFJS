@@ -4,13 +4,7 @@
         device-position="{{devicePosition}}" 
         flash="off" 
         frame-size="small"
-        binderror="error">
-       <canvas
-          id="canvasWebGL"
-          class="canvasWebGL"
-          type="webgl"
-          disable-scroll="true">
-        </canvas> 
+        binderror="error"> 
       </camera>
       <button type="default" bindtap="changeDirection" class="marginTop10">change camera direction</button>
     </view>

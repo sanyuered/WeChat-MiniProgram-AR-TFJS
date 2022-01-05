@@ -78,7 +78,7 @@ Page({
             };;
             canvasWidth = res.width;
             canvasHeight = res.height;
-            console.log('onCameraFrame:', res.width, res.height);
+            // console.log('onCameraFrame:', res.width, res.height);
         });
 
         this.intervalId = setInterval(function () {

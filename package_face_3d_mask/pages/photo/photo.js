@@ -13,7 +13,7 @@ Page({
     // if it is taking photo
     isRunning: true,
   },
-  async onLoad() {
+  async onReady() {
     // load tfjs model
     wx.showLoading({
       title: 'Loading TFJS...',
@@ -21,10 +21,8 @@ Page({
     await face.loadModel();
     wx.hideLoading();
 
-    setTimeout(function () {
-      // load 3d model
-      model.initThree(canvasWebGLId, modelUrl);
-    }, 150)
+    // load 3d model
+    model.initThree(canvasWebGLId, modelUrl);
   },
   onUnload: function () {
     model.stopAnimate();
