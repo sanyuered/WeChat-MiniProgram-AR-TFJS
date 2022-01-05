@@ -4,6 +4,7 @@
 
 | Date　　　| Update |
 | -- | -- |
+| 2022-01-05 | New: Added a image classify demo using tfjs. |
 | 2021-09-08 | New: Added a hand pose demo using tfjs. It is slow and about 500 ms per detection.|
 | 2021-03-13 | Bug Fixed: 1. The image of the face 2d mask is not displayed on android WeChat. 2. When enter the demo UI on the second time, the 3D model is not displayed.|
 | 2021-03-11 | New: A Face AR using "face-landmarks-detection" and "TensorFlow.js". Update: Replace "face-api.js" with "face-landmarks-detection", the codes of "face-api.js" are removed. |
@@ -66,6 +67,12 @@ Use the demo to scan a hand. Expect a effect below.
 
 ![avatar](screenshot/5.jpg)
 
+## Image Classify
+
+Use the demo to scan a cup. Expect a effect below.
+
+![avatar](screenshot/7.jpg)
+
 ## How to build
 
 The WeChat Mini-program includes some npm packages. We install and compile the npm packages.
@@ -123,6 +130,19 @@ HANDDETECT_MODEL_PATH = 'https://m.sanyue.red/demo/tfjs/handdetector_v1';
 
 // modified
 HANDPOSE_MODEL_PATH = 'https://m.sanyue.red/demo/tfjs/handskeleton_v1';
+```
+
+You can search keywords that are "mobilenet_model_path" in the file "mobilenet.js". 
+
+File: /package_mobilenet/utils/mobilenet.js
+
+```javascript
+// mobilenet_model_path
+  '2.00': {
+    '0.50': {
+      url: 'https://m.sanyue.red/demo/tfjs/mobilenet_v2_050_224',
+      inputRange: [0, 1]
+    },
 ```
 
 ## Set the url of the 3D model
