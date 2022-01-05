@@ -16,7 +16,7 @@ const PATH_SEPARATOR = '/';
 const PATH_PREFIX = 'tensorflowjs_models';
 const INFO_SUFFIX = 'info.json';
 const MODEL_SUFFIX = 'model_without_weight.json';
-const WEIGHT_DATA_SUFFIX = 'weight_data';
+const WEIGHT_DATA_SUFFIX = 'weight_data.bin';
 
 // get user path
 // https://developers.weixin.qq.com/miniprogram/dev/api/base/env/env.html
@@ -28,6 +28,7 @@ function getUserDataPath() {
           'http://usr',  // value of wx.env.USER_DATA_PATH in simulate
     };
   }
+ 
   return wx.env.USER_DATA_PATH;
 }
 const MODEL_PATH = [getUserDataPath(), PATH_PREFIX].join(PATH_SEPARATOR);
@@ -77,7 +78,7 @@ function removeFile(
 function readFile(
     fsm,
     filePath,
-    encoding = 'utf-8',
+    encoding,
     ) {
   return new Promise((resolve, reject) => {
     fsm.readFile({
@@ -88,7 +89,7 @@ function readFile(
           resolve(res.data);
           return;
         }
-        reject(new Error('Empty File'));
+        reject(new Error(filePath+' is a Empty File.'));
       },
       fail: (res) => {
         reject(new Error(res.errMsg));
@@ -109,8 +110,7 @@ function writeFile(
     fsm, 
     filePath,
     data,
-    // 'binary'|'utf-8'
-    encoding = 'binary'){
+    encoding){
   return new Promise((resolve, reject) => {
     removeFile(fsm, filePath).then(() => {
        fsm.writeFile({
@@ -223,7 +223,8 @@ class FileStorageHandler {
    */
   async load() {
     const info = JSON.parse(
-        await readFile(this.fsm, this.paths.info, 'utf-8'));
+        await readFile(this.fsm, this.paths.info, 
+          'utf-8'));
     if (info == null) {
       throw new Error(
           `In file storage, there is no model with name '${this.prefix}'`);
@@ -237,7 +238,8 @@ class FileStorageHandler {
 
     const modelArtifacts = JSON.parse(
         await readFile(
-            this.fsm, this.paths.modelArtifactsWithoutWeights, 'utf-8'));
+            this.fsm, this.paths.modelArtifactsWithoutWeights, 
+            'utf-8'));
 
     // load weight data
     modelArtifacts.weightData = await readFile(this.fsm, this.paths.weightData);
